@@ -1,10 +1,49 @@
-import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
-import * as Location from 'expo-location';
+import React, { useState, useEffect } from 'react';
+import { Platform, StyleSheet, Text, View, Button } from 'react-native';
+import { Constants, Location, Permissions } from 'expo';
+
 export default function GeoScreen() {
+
+  const [location, setLocation] = useState();
+  const [errorMessage, setErrorMessage] = useState('Waiting...');
+
+  const [latitude, setLatitude] = useState();
+
+  const [longitude, setLongitude] = useState();
+
+  useEffect(() => {
+
+    if (Platform.OS === 'android' && !Constants.isDevice) {
+      setErrorMessage('Oops, this will not work on Sketch in an Android emulator. Try it on your device!');
+    } else {
+      _getLocationAsync();
+    }
+  });
+
+  _getLocationAsync = async () => {
+    let { status } = await Permissions.askAsync(Permissions.LOCATION);
+    if (status !== 'granted') {
+
+      setErrorMessage('Permission to access location was denied');
+
+    }
+
+    let info = await Location.getCurrentPositionAsync({});
+
+
+    setLatitude(info.coords.latitude);
+
+    setLongitude(info.coords.longitude);
+
+  }
   return (
     <View style={styles.container}>
       <Text>Open up App.js to start working on your app!</Text>
+
+      <Text> Error : {errorMessage}</Text>
+      <Text>{longitude} : {latitude}</Text>
+
+
     </View>
   );
 }
