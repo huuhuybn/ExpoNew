@@ -6,7 +6,7 @@ export default function HomeScreen(props) {
 
     return (
         <View style={styles.container}>
-            <Text>Open up App.js to start working on your app!</Text>
+            <Text>if you need more examples, pls contact me at dotplays.com@gmail.com</Text>
             <Button title='Geolocation' onPress={() => {
                 props.navigation.navigate('Geo');
 
@@ -18,10 +18,6 @@ export default function HomeScreen(props) {
             <Button title='List' onPress={() => {
                 props.navigation.navigate('List');
             }} />
-
-
-
-
 
         </View>
     );
