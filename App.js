@@ -4,6 +4,7 @@ import { createStackNavigator, createAppContainer } from "react-navigation";
 import HomeScreen from './screen/HomeScreen';
 import GeoScreen from './screen/GeoScreen';
 import LoginScreen from './screen/LoginScreen';
+import ListScreen from './screen/ListScreen';
 
 
 function App() {
@@ -22,6 +23,8 @@ const AppNavigator = createStackNavigator({
     screen: GeoScreen
   }, Login: {
     screen: LoginScreen
+  }, List: {
+    screen: ListScreen
   }
 });
 

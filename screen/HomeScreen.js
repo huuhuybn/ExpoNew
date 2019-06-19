@@ -15,6 +15,11 @@ export default function HomeScreen(props) {
                 props.navigation.navigate('Login');
             }} />
 
+            <Button title='List' onPress={() => {
+                props.navigation.navigate('List');
+            }} />
+
+
 
 
 
